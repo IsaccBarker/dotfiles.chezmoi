@@ -90,12 +90,17 @@ function install_generic {
     fi
 
 
-    echo_info "Installing oh-my-ZSH!"
-    mv ~/.zshrc ~/.zshrc.bak.tmp
-    ZSH= sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    mv ~/.zshrc.bak.tmp ~/.zshrc
+    echo_info "Is Oh-My-ZSH installed?"
+    if [ ! -d "~/.oh-my-zsh"]
+        echo_info "Oh-My-ZSH is not installed! Installing...."
+        mv ~/.zshrc ~/.zshrc.bak.tmp
+        ZSH= sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        mv ~/.zshrc.bak.tmp ~/.zshrc
 
-    echo_success "Oh-my-ZSH installed!"
+        echo_success "Oh-My-ZSH installed!"
+    else
+        echo_success "Oh-My-ZSH insatlled!"
+    fi
 }
 
 function install_mac_os {
