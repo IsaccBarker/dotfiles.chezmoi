@@ -1,4 +1,4 @@
-# Milo Banks's (Isacc Barker's) Dotfiles
+# Dotfiles
 ## Installation from cloned repo
 ```zsh
 python install.py # NOT install.sh
