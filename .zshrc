@@ -121,16 +121,22 @@ strftime -rs midnight %F $today
 since_midnight=$((now - midnight))
 
 # Neofetch!
-neofetch --ascii_distro `fortune neofetch-os` --disable terminal --disable packages --disable host --disable --disable uptime --disable shell --disable resolution --disable de --disable wm --disable "wm theme" --disable theme --disable icons
+neofetch --ascii_distro `fortune neofetch-os` --disable terminal --disable packages --disable host --disable --disable uptime --disable shell --disable resolution --disable de --disable wm --disable "wm theme"   --disable theme --disable icons
 
 echo
 
 # Quotes
 if [ "$since_midnight" -ge "75600" ]; then
-    fortune -s -o # No one is looking, make offensive jokes
+    fortune -a -s -o # No one is looking, make offensive jokes
 else
-    fortune -s # People might be looking
+    fortune -a -s # People might be looking
 fi
 
 echo
+
+# Disable palm detection
+xinput set-prop 13 365 0
+
+export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
+alias mux=tmuxinator
 
