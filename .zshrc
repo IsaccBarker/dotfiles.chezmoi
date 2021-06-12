@@ -135,7 +135,7 @@ fi
 echo
 
 # Disable palm detection
-xinput set-prop 13 365 0
+xinput set-prop 13 365 0 1>/dev/null 2>/dev/null
 
 export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
 alias mux=tmuxinator
