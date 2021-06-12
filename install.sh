@@ -91,7 +91,7 @@ function install_generic {
 
 
     echo_info "Is Oh-My-ZSH installed?"
-    if [ ! -d "~/.oh-my-zsh"]
+    if [ ! -d "$HOME/.oh-my-zsh" ]; then
         echo_info "Oh-My-ZSH is not installed! Installing...."
         mv ~/.zshrc ~/.zshrc.bak.tmp
         ZSH= sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
