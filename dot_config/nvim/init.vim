@@ -8,7 +8,8 @@ Plug 'PhilRunninger/nerdtree-buffer-ops' " Highlighter for NERD
 Plug 'Nopik/vim-nerdtree-direnter' " Fix issue in which opening a directory in NERDTree opens a new tab
 Plug 'szw/vim-g' " Search Google inside vim!
 Plug 'hienvd/vim-stackoverflow' " Search Stack Overflow inside vim!
-Plug 'vim-airline/vim-airline' " Cool status bar
+" Plug 'vim-airline/vim-airline' " Cool status bar
+Plug 'nvim-lualine/lualine.nvim' " Better status bar
 Plug 'cespare/vim-toml' " TOML syntax
 Plug 'tikhomirov/vim-glsl' " GLSL syntax
 Plug 'beyondmarc/hlsl.vim' " HLSL syntax
@@ -29,17 +30,22 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
-Plug 'morhetz/gruvbox' " Gruvbox theme
+" Plug 'morhetz/gruvbox' " Gruvbox theme
+Plug 'arcticicestudio/nord-vim' " Nord theme
 Plug 'wakatime/vim-wakatime' " How much time I spend
 Plug 'codota/tabnine-vim' " Tabnine AI autocomplete
 Plug 'glepnir/dashboard-nvim' " Neat dashboard!
 Plug 'liuchengxu/vim-clap' " Fuzzy search
 
+Plug 'folke/trouble.nvim' " Trouble error display
+
 call plug#end()
 
 " Quite literally the best look and feel every
-let g:material_theme_style = 'gruvbox'
-colorscheme gruvbox
+" let g:material_theme_style = 'gruvbox'
+" colorscheme gruvbox
+let g:material_theme_style = 'nord'
+colorscheme nord
 
 let g:dashboard_default_executive ='clap'
 
@@ -122,7 +128,7 @@ nnoremap <leader>e :YcmShowDetailedDiagnostic<CR>
 autocmd BufReadPost * tabfirst
 
 " Setup our cool tab line.
-let g:airline#extensions#tabline#enabled = 1 " Display all buffers when only one tab is open.
+" let g:airline#extensions#tabline#enabled = 1 " Display all buffers when only one tab is open.
 " let g:airline#extensions#tabline#formatter = 'unique_tail' " Get better tab names
 
 " Show all the errors
@@ -149,6 +155,14 @@ set autochdir
 set mouse=a
 
 lua << EOF
+require('lualine').setup{
+    options = {
+        theme = 'nord',
+        section_separators = { left = '', right = ''},
+        component_separators = { left = '', right = ''}
+    }
+}
+
 require'lspconfig'.rust_analyzer.setup{}
 
 require('rust-tools').setup({})
