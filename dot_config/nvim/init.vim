@@ -6,17 +6,13 @@ Plug 'scrooloose/nerdtree' " NERD file explorer
 Plug 'PhilRunninger/nerdtree-buffer-ops' " Highlighter for NERD
 " Plug 'ycm-core/YouCompleteMe' " Super handy code completion for a shit load of languages
 Plug 'Nopik/vim-nerdtree-direnter' " Fix issue in which opening a directory in NERDTree opens a new tab
-Plug 'szw/vim-g' " Search Google inside vim!
-Plug 'hienvd/vim-stackoverflow' " Search Stack Overflow inside vim!
 " Plug 'vim-airline/vim-airline' " Cool status bar
 Plug 'nvim-lualine/lualine.nvim' " Better status bar
 Plug 'cespare/vim-toml' " TOML syntax
-Plug 'tikhomirov/vim-glsl' " GLSL syntax
-Plug 'beyondmarc/hlsl.vim' " HLSL syntax
-Plug 'lambdalisue/battery.vim' " Battery
 Plug 'mox-mox/vim-localsearch' " Local searching
 Plug 'mhinz/vim-signify' " Handy git diff stuff
 " Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'romgrk/barbar.nvim'
 
 Plug 'neovim/nvim-lspconfig' " Nvim LSP
 Plug 'kabouzeid/nvim-lspinstall' " Autoinstall LSP servers
@@ -31,7 +27,8 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
 " Plug 'morhetz/gruvbox' " Gruvbox theme
-Plug 'arcticicestudio/nord-vim' " Nord theme
+Plug 'arcticicestudio/nord-vim' " Nord theme (powerline thingamajib)
+Plug 'ayu-theme/ayu-vim' " Ayu theme
 Plug 'wakatime/vim-wakatime' " How much time I spend
 Plug 'codota/tabnine-vim' " Tabnine AI autocomplete
 Plug 'glepnir/dashboard-nvim' " Neat dashboard!
@@ -44,8 +41,14 @@ call plug#end()
 " Quite literally the best look and feel every
 " let g:material_theme_style = 'gruvbox'
 " colorscheme gruvbox
-let g:material_theme_style = 'nord'
-colorscheme nord
+let g:material_theme_style = 'ayu'
+
+set termguicolors     " enable true colors support
+" let ayucolor="light"  " for light version of theme
+" let ayucolor="mirage" " for mirage version of theme
+let ayucolor="dark"   " for dark version of theme
+
+colorscheme ayu
 
 let g:dashboard_default_executive ='clap'
 
@@ -89,9 +92,21 @@ set nu
 nmap <leader>/ <Plug>localsearch_toggle
 
 " Setup tabing shortcuts
-nnoremap <leader>n :tabnew<CR>
-nnoremap <S-Left> :-tabnext<CR>
-nnoremap <S-Right> :+tabnext<CR>
+" We don't use built in tab support
+" nnoremap <leader>n :tabnew<CR>
+" nnoremap <S-Left> :-tabnext<CR>
+" nnoremap <S-Right> :+tabnext<CR>
+"
+nnoremap <silent>    <S-Left> :BufferPrevious<CR>
+nnoremap <silent>    <S-Right> :BufferNext<CR>
+nnoremap <silent>    <S-1> :BufferGoto 1<CR>
+nnoremap <silent>    <S-2> :BufferGoto 2<CR>
+nnoremap <silent>    <S-3> :BufferGoto 3<CR>
+nnoremap <silent>    <S-4> :BufferGoto 4<CR>
+nnoremap <silent>    <S-5> :BufferGoto 5<CR>
+nnoremap <silent>    <S-6> :BufferGoto 6<CR>
+nnoremap <silent>    <S-7> :BufferGoto 7<CR>
+nnoremap <silent>    <S-8> :BufferGoto 8<CR>
 
 " Setup NERDTree shortcuts
 nnoremap <leader>g :NERDTreeFocus<CR>
