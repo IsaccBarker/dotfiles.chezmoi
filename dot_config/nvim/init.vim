@@ -2,16 +2,12 @@
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'tpope/vim-fugitive' " Git plugin
-" Plug 'scrooloose/nerdtree' " NERD file explorer
 Plug 'PhilRunninger/nerdtree-buffer-ops' " Highlighter for NERD
-" Plug 'ycm-core/YouCompleteMe' " Super handy code completion for a shit load of languages
 Plug 'Nopik/vim-nerdtree-direnter' " Fix issue in which opening a directory in NERDTree opens a new tab
-" Plug 'vim-airline/vim-airline' " Cool status bar
 Plug 'nvim-lualine/lualine.nvim' " Better status bar
 Plug 'cespare/vim-toml' " TOML syntax
 Plug 'mox-mox/vim-localsearch' " Local searching
 Plug 'mhinz/vim-signify' " Handy git diff stuff
-" Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
@@ -28,7 +24,6 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
-" Plug 'morhetz/gruvbox' " Gruvbox theme
 Plug 'arcticicestudio/nord-vim' " Nord theme (powerline thingamajib)
 Plug 'ayu-theme/ayu-vim' " Ayu theme
 Plug 'wakatime/vim-wakatime' " How much time I spend
@@ -43,7 +38,6 @@ call plug#end()
 " Quite literally the best look and feel every
 " let g:material_theme_style = 'gruvbox'
 " colorscheme gruvbox
-"set g:material_theme_style = 'ayu'
 
 set termguicolors     " enable true colors support
 " let ayucolor="light"  " for light version of theme
@@ -85,7 +79,7 @@ endif
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set updatetime=300
+set updatetime=100
 
 " Line numbers
 set nu
@@ -95,10 +89,6 @@ nmap <leader>/ <Plug>localsearch_toggle
 
 " Setup tabing shortcuts
 " We don't use built in tab support
-" nnoremap <leader>n :tabnew<CR>
-" nnoremap <S-Left> :-tabnext<CR>
-" nnoremap <S-Right> :+tabnext<CR>
-"
 nnoremap <silent>    <S-Left> :BufferPrevious<CR>
 nnoremap <silent>    <S-Right> :BufferNext<CR>
 nnoremap <silent>    <S-1> :BufferGoto 1<CR>
@@ -111,19 +101,9 @@ nnoremap <silent>    <S-7> :BufferGoto 7<CR>
 nnoremap <silent>    <S-8> :BufferGoto 8<CR>
 nnoremap <silent>    <S-c> :BufferClose<CR>
 
-" Setup NERDTree shortcuts
-" nnoremap <leader>g :NERDTreeFocus<CR>
-" nnoremap <leader>f :NERDTreeToggle<CR>
-
 " Start the dashboard when Vim is started without file arguments.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | :Dashboard | endif
-
-" Open all files selected in NERDTree in new tabs.
-" let NERDTreeMapOpenInTab='<ENTER>'
-
-" Exit Vim if NERDTree is the only window left.
-" autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " Exit Vim if terminal in the only tab left
 autocmd TabEnter * if stridx(@%, '/bin/zsh') != -1 | quit | endif 
@@ -144,10 +124,6 @@ nnoremap <leader>e :YcmShowDetailedDiagnostic<CR>
 
 " Move back to file that is wanted
 autocmd BufReadPost * tabfirst
-
-" Setup our cool tab line.
-" let g:airline#extensions#tabline#enabled = 1 " Display all buffers when only one tab is open.
-" let g:airline#extensions#tabline#formatter = 'unique_tail' " Get better tab names
 
 " Show all the errors
 let g:ycm_max_diagnostics_to_display = 1000
@@ -260,21 +236,10 @@ require'compe'.setup {
 }
 
 require('lspkind').init({
-    -- enables text annotations
-    --
-    -- default: true
     with_text = true,
 
-    -- default symbol map
-    -- can be either 'default' (requires nerd-fonts font) or
-    -- 'codicons' for codicon preset (requires vscode-codicons font)
-    --
-    -- default: 'default'
     preset = 'codicons',
 
-    -- override preset symbols
-    --
-    -- default: {}
     symbol_map = {
       Text = "!",
       Method = "𝑓",
