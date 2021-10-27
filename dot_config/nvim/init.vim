@@ -2,7 +2,7 @@
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'tpope/vim-fugitive' " Git plugin
-Plug 'scrooloose/nerdtree' " NERD file explorer
+" Plug 'scrooloose/nerdtree' " NERD file explorer
 Plug 'PhilRunninger/nerdtree-buffer-ops' " Highlighter for NERD
 " Plug 'ycm-core/YouCompleteMe' " Super handy code completion for a shit load of languages
 Plug 'Nopik/vim-nerdtree-direnter' " Fix issue in which opening a directory in NERDTree opens a new tab
@@ -12,7 +12,9 @@ Plug 'cespare/vim-toml' " TOML syntax
 Plug 'mox-mox/vim-localsearch' " Local searching
 Plug 'mhinz/vim-signify' " Handy git diff stuff
 " Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
+Plug 'kyazdani42/nvim-tree.lua'
 
 Plug 'neovim/nvim-lspconfig' " Nvim LSP
 Plug 'kabouzeid/nvim-lspinstall' " Autoinstall LSP servers
@@ -41,7 +43,7 @@ call plug#end()
 " Quite literally the best look and feel every
 " let g:material_theme_style = 'gruvbox'
 " colorscheme gruvbox
-let g:material_theme_style = 'ayu'
+"set g:material_theme_style = 'ayu'
 
 set termguicolors     " enable true colors support
 " let ayucolor="light"  " for light version of theme
@@ -107,20 +109,21 @@ nnoremap <silent>    <S-5> :BufferGoto 5<CR>
 nnoremap <silent>    <S-6> :BufferGoto 6<CR>
 nnoremap <silent>    <S-7> :BufferGoto 7<CR>
 nnoremap <silent>    <S-8> :BufferGoto 8<CR>
+nnoremap <silent>    <S-c> :BufferClose<CR>
 
 " Setup NERDTree shortcuts
-nnoremap <leader>g :NERDTreeFocus<CR>
-nnoremap <leader>f :NERDTreeToggle<CR>
+" nnoremap <leader>g :NERDTreeFocus<CR>
+" nnoremap <leader>f :NERDTreeToggle<CR>
 
 " Start the dashboard when Vim is started without file arguments.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | :Dashboard | endif
 
 " Open all files selected in NERDTree in new tabs.
-let NERDTreeMapOpenInTab='<ENTER>'
+" let NERDTreeMapOpenInTab='<ENTER>'
 
 " Exit Vim if NERDTree is the only window left.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " Exit Vim if terminal in the only tab left
 autocmd TabEnter * if stridx(@%, '/bin/zsh') != -1 | quit | endif 
@@ -169,7 +172,47 @@ set autochdir
 " Mouse support
 set mouse=a
 
+" Nvim tree settings
+let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ]
+let g:nvim_tree_icons = {
+    \ 'default': '~',
+    \ 'symlink': '⤫',
+    \ 'git': {
+    \   'unstaged': "✗",
+    \   'staged': "✓",
+    \   'unmerged': "䷇",
+    \   'renamed': "➜",
+    \   'untracked': "★",
+    \   'deleted': "␡",
+    \   'ignored': "#"
+    \   },
+    \ 'folder': {
+    \   'arrow_open': "+",
+    \   'arrow_closed': "-",
+    \   'default': "~",
+    \   'open': "~",
+    \   'empty': "-",
+    \   'empty_open': "-",
+    \   'symlink': "⤫"
+    \   'symlink_open': "⤫",
+    \   }
+    \ }
+
 lua << EOF
+require'nvim-tree'.setup {
+    view = {
+        width = 30,
+        height = 30,
+        hide_root_folder = false,
+        side = 'left',
+        auto_resize = false,
+        mappings = {
+            custom_only = false,
+            list = {}
+        }
+    },
+}
+
 require('lualine').setup{
     options = {
         theme = 'nord',

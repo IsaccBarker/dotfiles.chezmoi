@@ -1,4 +1,3 @@
-
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'tpope/vim-fugitive' " Git plugin
