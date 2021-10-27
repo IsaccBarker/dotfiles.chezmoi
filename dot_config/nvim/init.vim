@@ -1,4 +1,3 @@
-
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'tpope/vim-fugitive' " Git plugin
@@ -16,7 +15,6 @@ Plug 'neovim/nvim-lspconfig' " Nvim LSP
 Plug 'kabouzeid/nvim-lspinstall' " Autoinstall LSP servers
 Plug 'hrsh7th/nvim-compe' " Completion engine
 Plug 'onsails/lspkind-nvim' " Pictograms
-Plug 'SirVer/ultisnips' " Quick large autocompletes
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'neovim/nvim-lspconfig'
 Plug 'simrat39/rust-tools.nvim'
@@ -28,7 +26,6 @@ Plug 'arcticicestudio/nord-vim' " Nord theme (powerline thingamajib)
 Plug 'ayu-theme/ayu-vim' " Ayu theme
 Plug 'wakatime/vim-wakatime' " How much time I spend
 Plug 'codota/tabnine-vim' " Tabnine AI autocomplete
-Plug 'glepnir/dashboard-nvim' " Neat dashboard!
 Plug 'liuchengxu/vim-clap' " Fuzzy search
 
 Plug 'folke/trouble.nvim' " Trouble error display
@@ -46,26 +43,8 @@ let ayucolor="dark"   " for dark version of theme
 
 colorscheme ayu
 
-let g:dashboard_default_executive ='clap'
-
 nmap <Leader>ss :<C-u>SessionSave<CR>
 nmap <Leader>sl :<C-u>SessionLoad<CR>
-nnoremap <silent> <Leader>fh :DashboardFindHistory<CR>
-nnoremap <silent> <Leader>ff :DashboardFindFile<CR>
-nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
-nnoremap <silent> <Leader>fa :DashboardFindWord<CR>
-nnoremap <silent> <Leader>fb :DashboardJumpMark<CR>
-nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
-
-" Dashboard (Home screen) Settings
-let g:dashboard_footer_icon = ' ' "  neovim loaded x plugins
-" Add custom neovim logo at top of dashboard
-let g:dashboard_preview_command = 'cat'
-let g:dashboard_preview_pipeline = 'lolcat'
-let g:dashboard_preview_file = '~/.config/nvim/ascii/planetDash.txt'
-" Size of area where dashboard logo goes
-let g:dashboard_preview_file_height = 9 
-let g:dashboard_preview_file_width = 80
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
@@ -101,9 +80,7 @@ nnoremap <silent>    <S-7> :BufferGoto 7<CR>
 nnoremap <silent>    <S-8> :BufferGoto 8<CR>
 nnoremap <silent>    <S-c> :BufferClose<CR>
 
-" Start the dashboard when Vim is started without file arguments.
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | :Dashboard | endif
 
 " Exit Vim if terminal in the only tab left
 autocmd TabEnter * if stridx(@%, '/bin/zsh') != -1 | quit | endif 
@@ -161,7 +138,7 @@ let g:nvim_tree_icons = {
     \   'untracked': "★",
     \   'deleted': "␡",
     \   'ignored': "#"
-    \   },
+    \  },
     \ 'folder': {
     \   'arrow_open': "+",
     \   'arrow_closed': "-",
@@ -169,7 +146,7 @@ let g:nvim_tree_icons = {
     \   'open': "~",
     \   'empty': "-",
     \   'empty_open': "-",
-    \   'symlink': "⤫"
+    \   'symlink': "⤫",
     \   'symlink_open': "⤫",
     \   }
     \ }
