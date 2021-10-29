@@ -61,7 +61,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background and no title bar buttons
-  decorations: buttonless # TODO: Try out full!
+  decorations: none
 
   # Startup Mode (changes require restart)
   #
@@ -72,10 +72,10 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Maximized
+  startup_mode: Windowed
 
   # Window title
-  title: Egg-salent Terminal
+  title: Egg Salad
 
   # Allow terminal applications to change Alacritty's window title.
   dynamic_title: false

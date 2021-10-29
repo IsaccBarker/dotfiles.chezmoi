@@ -23,9 +23,8 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'arcticicestudio/nord-vim' " Nord theme (powerline thingamajib)
-Plug 'ayu-theme/ayu-vim' " Ayu theme
+Plug 'Shatur/neovim-ayu'
 Plug 'wakatime/vim-wakatime' " How much time I spend
-Plug 'codota/tabnine-vim' " Tabnine AI autocomplete
 Plug 'liuchengxu/vim-clap' " Fuzzy search
 
 Plug 'folke/trouble.nvim' " Trouble error display
@@ -37,10 +36,6 @@ call plug#end()
 " colorscheme gruvbox
 
 set termguicolors     " enable true colors support
-" let ayucolor="light"  " for light version of theme
-" let ayucolor="mirage" " for mirage version of theme
-let ayucolor="dark"   " for dark version of theme
-
 colorscheme ayu
 
 nmap <Leader>ss :<C-u>SessionSave<CR>
@@ -165,6 +160,11 @@ require'nvim-tree'.setup {
         }
     },
 }
+
+require('ayu').setup({
+    mirage = false,
+    overrides = {},
+})
 
 require('lualine').setup{
     options = {
