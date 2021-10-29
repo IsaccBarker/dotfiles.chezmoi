@@ -11,6 +11,24 @@ focus_new_windows = true
 
 [[keybind]]
 command = "Execute"
+value = "pactl set-sink-volume 1 +5%"
+modifier = []
+key = "XF86XK_AudioRaiseVolume"
+
+[[keybind]]
+command = "Execute"
+value = "pactl set-sink-volume 1 -5%"
+modifier = []
+key = "XF86XK_AudioLowerVolume"
+
+[[keybind]]
+command = "Execute"
+value = "pactl set-sink-volume 1 0"
+modifier = []
+key = "XF86XKAudioMute"
+
+[[keybind]]
+command = "Execute"
 value = "dmenu_run"
 modifier = ["modkey"]
 key = "space"
