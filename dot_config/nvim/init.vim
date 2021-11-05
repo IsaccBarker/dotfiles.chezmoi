@@ -36,7 +36,7 @@ call plug#end()
 " colorscheme gruvbox
 
 set termguicolors     " enable true colors support
-colorscheme ayu
+colorscheme ayu-dark
 
 nmap <Leader>ss :<C-u>SessionSave<CR>
 nmap <Leader>sl :<C-u>SessionLoad<CR>
