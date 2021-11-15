@@ -69,7 +69,7 @@ fi
 echo
 
 # Disable palm detection
-if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     xinput set-prop 13 365 0 1>/dev/null 2>/dev/null
 fi
 
