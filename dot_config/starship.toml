@@ -1,5 +1,5 @@
 add_newline = false
-format = "\\[ $username$hostname$directory\\] $python$rust$git$cmd_duration$memory_usage$jobs$status\\$ "
+format = " $directory$username$hostname$python$rust$git\\$ "
 
 [line_break]
 disabled = true
