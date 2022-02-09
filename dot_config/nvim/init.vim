@@ -1,9 +1,6 @@
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'tpope/vim-fugitive' " Git plugin
-Plug 'PhilRunninger/nerdtree-buffer-ops' " Highlighter for NERD
-Plug 'Nopik/vim-nerdtree-direnter' " Fix issue in which opening a directory in NERDTree opens a new tab
-Plug 'nvim-lualine/lualine.nvim' " Better status bar
 Plug 'cespare/vim-toml' " TOML syntax
 Plug 'mox-mox/vim-localsearch' " Local searching
 Plug 'mhinz/vim-signify' " Handy git diff stuff
@@ -20,36 +17,29 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'simrat39/rust-tools.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
 
-Plug 'arcticicestudio/nord-vim' " Nord theme (powerline thingamajib)
-Plug 'Shatur/neovim-ayu'
-Plug 'wakatime/vim-wakatime' " How much time I spend
+Plug 'kaicataldo/material.vim'
 Plug 'liuchengxu/vim-clap' " Fuzzy search
 
 Plug 'folke/trouble.nvim' " Trouble error display
 
 call plug#end()
 
-" Quite literally the best look and feel every
-" let g:material_theme_style = 'gruvbox'
-" colorscheme gruvbox
+" Easier to see cursor
+set nowrap
+set cursorline
+" set listchars=tab:\│\
+set listchars=tab:│\ ,extends:›,precedes:‹,nbsp:·,trail:·
+set showbreak=↪\
+set list
 
 set termguicolors     " enable true colors support
-colorscheme ayu-dark
+let g:material_terminal_italics = 1
+let g_material_theme_style = 'lighter-community'
+colorscheme material
 
 nmap <Leader>ss :<C-u>SessionSave<CR>
 nmap <Leader>sl :<C-u>SessionLoad<CR>
-
-" Remap <C-f> and <C-b> for scroll float windows/popups.
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-endif
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -80,33 +70,12 @@ autocmd StdinReadPre * let s:std_in=1
 " Exit Vim if terminal in the only tab left
 autocmd TabEnter * if stridx(@%, '/bin/zsh') != -1 | quit | endif 
 
-" Setup YouCompleteMe goto shortcuts
-nnoremap <leader>ji :YcmCompleter GoTo<CR>
-
-" Setup YouCompleteMe semantic information shortcuts
-nnoremap <leader>gt :YcmCompleter GetType<CR>
-
-" Setup YouCompleteMe refactoring shortcuts
-nnoremap <leader>rr :YcmCompleter FixIt<CR>
-nnoremap <leader>rn :YcmCompleter RefactorName<CR>
-nnoremap <leader>rf :YcmCompleter Format<CR>
-
-" Setup random YouCompleteMe shortcuts
-nnoremap <leader>e :YcmShowDetailedDiagnostic<CR>
-
 " Move back to file that is wanted
 autocmd BufReadPost * tabfirst
-
-" Show all the errors
-let g:ycm_max_diagnostics_to_display = 1000
-
-" Enable Rust for YCM
-let g:ycm_global_ycm_extra_conf = '~/.config/nvim/global_extra_conf.py'
 
 " Use 4 spaces
 set tabstop=4
 set shiftwidth=4
-set expandtab
 
 " Setup character encoding
 set encoding=UTF-8
@@ -121,33 +90,41 @@ set autochdir
 set mouse=a
 
 " Nvim tree settings
-let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ]
+let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
+let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
+let g:nvim_tree_highlight_opened_files = 1 "0 by default, will enable folder and file icon highlight for opened files/directories.
+let g:nvim_tree_root_folder_modifier = ':~' "This is the default. See :help filename-modifiers for more options
+let g:nvim_tree_add_trailing = 1 "0 by default, append a trailing slash to folder names
+let g:nvim_tree_group_empty = 1 " 0 by default, compact folders that only contain a single folder into one node in the file tree
+let g:nvim_tree_symlink_arrow = ' >> ' " defaults to ' ➛ '. used as a separator between symlinks' source and target.
+let g:nvim_tree_create_in_closed_folder = 0 " 1 by default, When creating files, sets the path of a file when cursor is on a closed folder to the parent folder when 0, and inside the folder when 1.
+let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', 'build' ]
 let g:nvim_tree_icons = {
-    \ 'default': '~',
-    \ 'symlink': '⤫',
+    \ 'default': '+',
+    \ 'symlink': '+',
     \ 'git': {
-    \   'unstaged': "✗",
-    \   'staged': "✓",
-    \   'unmerged': "䷇",
-    \   'renamed': "➜",
-    \   'untracked': "★",
-    \   'deleted': "␡",
-    \   'ignored': "#"
+    \   'unstaged': "+",
+    \   'staged': "+",
+    \   'unmerged': "+",
+    \   'renamed': "+",
+    \   'untracked': "+",
+    \   'deleted': "+",
+    \   'ignored': "+"
     \  },
     \ 'folder': {
-    \   'arrow_open': "+",
-    \   'arrow_closed': "-",
-    \   'default': "~",
-    \   'open': "~",
-    \   'empty': "-",
-    \   'empty_open': "-",
-    \   'symlink': "⤫",
-    \   'symlink_open': "⤫",
+    \   'arrow_open': "",
+    \   'arrow_closed': "",
+    \   'default': "",
+    \   'open': "",
+    \   'empty': "",
+    \   'empty_open': "",
+    \   'symlink': "",
+    \   'symlink_open': "",
     \   }
     \ }
 
 lua << EOF
-require'nvim-tree'.setup {
+require('nvim-tree').setup {
     view = {
         width = 30,
         height = 30,
@@ -161,24 +138,11 @@ require'nvim-tree'.setup {
     },
 }
 
-require('ayu').setup({
-    mirage = false,
-    overrides = {},
-})
-
-require('lualine').setup{
-    options = {
-        theme = 'nord',
-        section_separators = { left = '', right = ''},
-        component_separators = { left = '', right = ''}
-    }
-}
-
-require'lspconfig'.rust_analyzer.setup{}
+require('lspconfig').rust_analyzer.setup{}
 
 require('rust-tools').setup({})
 
-require'compe'.setup {
+require('compe').setup {
   enabled = true;
   autocomplete = true;
   debug = false;
