@@ -190,7 +190,7 @@ colors:
     yellow:  '0xf7eb95'
     blue:    '0x80cbc4'
     magenta: '0xff2f90'
-    cyan:    '0xaeddff'
+    cyan:    '0xb00020' # '0xaeddff'
     white:   '0xffffff'
 
   # Bright colors
@@ -201,7 +201,7 @@ colors:
     yellow:  '0xf7eb95'
     blue:    '0x7dc6bf'
     magenta: '0x6c71c4'
-    cyan:    '0x35434d'
+    cyan:    '0xb00020' # '0x35434d'
     white:   '0xffffff'
 
 # Bell
@@ -249,7 +249,6 @@ bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 1.0
 
 selection:
   # This string contains all characters that are used as separators for
