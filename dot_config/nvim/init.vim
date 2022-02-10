@@ -1,7 +1,7 @@
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'tikhomirov/vim-glsl' " GLSL syntax highlighting
-Plug 'tpope/vim-fugitive' " Git plugin
+" Plug 'tpope/vim-fugitive' " Git plugin
 Plug 'cespare/vim-toml' " TOML syntax
 Plug 'mox-mox/vim-localsearch' " Local searching
 Plug 'mhinz/vim-signify' " Handy git diff stuff

@@ -1,5 +1,5 @@
 add_newline = false
-format = " $directory$username$hostname$python$rust$git\\$ "
+format = " [$directory$username$hostname$python$rust$git\\$ ](red)"
 
 [line_break]
 disabled = true
