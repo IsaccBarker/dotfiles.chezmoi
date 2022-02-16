@@ -21,6 +21,7 @@ Plug 'nvim-lua/plenary.nvim'
 
 Plug 'kaicataldo/material.vim'
 Plug 'liuchengxu/vim-clap' " Fuzzy search
+Plug 'udalov/kotlin-vim' " Kotlin syntax
 
 Plug 'folke/trouble.nvim' " Trouble error display
 
@@ -77,6 +78,7 @@ autocmd BufReadPost * tabfirst
 " Use 4 spaces
 set tabstop=4
 set shiftwidth=4
+set expandtab
 
 " Setup character encoding
 set encoding=UTF-8
