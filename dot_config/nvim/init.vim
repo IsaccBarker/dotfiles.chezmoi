@@ -8,7 +8,7 @@ Plug 'mhinz/vim-signify' " Handy git diff stuff
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
-" Plug 'wakatime/vim-wakatime'
+Plug 'wakatime/vim-wakatime'
 
 Plug 'neovim/nvim-lspconfig' " Nvim LSP
 Plug 'kabouzeid/nvim-lspinstall' " Autoinstall LSP servers
