@@ -8,11 +8,12 @@ Plug 'mhinz/vim-signify' " Handy git diff stuff
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
+" Plug 'wakatime/vim-wakatime'
 
 Plug 'neovim/nvim-lspconfig' " Nvim LSP
 Plug 'kabouzeid/nvim-lspinstall' " Autoinstall LSP servers
 Plug 'hrsh7th/nvim-compe' " Completion engine
-Plug 'onsails/lspkind-nvim' " Pictograms
+" Plug 'onsails/lspkind-nvim' " Pictograms (TODO: update for latest nvim)
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'neovim/nvim-lspconfig'
 Plug 'simrat39/rust-tools.nvim'
@@ -93,41 +94,42 @@ set autochdir
 set mouse=a
 
 " Nvim tree settings
-let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
-let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
-let g:nvim_tree_highlight_opened_files = 1 "0 by default, will enable folder and file icon highlight for opened files/directories.
-let g:nvim_tree_root_folder_modifier = ':~' "This is the default. See :help filename-modifiers for more options
-let g:nvim_tree_add_trailing = 1 "0 by default, append a trailing slash to folder names
-let g:nvim_tree_group_empty = 1 " 0 by default, compact folders that only contain a single folder into one node in the file tree
-let g:nvim_tree_symlink_arrow = ' >> ' " defaults to ' ➛ '. used as a separator between symlinks' source and target.
-let g:nvim_tree_create_in_closed_folder = 0 " 1 by default, When creating files, sets the path of a file when cursor is on a closed folder to the parent folder when 0, and inside the folder when 1.
-let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', 'build' ]
-let g:nvim_tree_icons = {
-    \ 'default': '+',
-    \ 'symlink': '+',
-    \ 'git': {
-    \   'unstaged': "+",
-    \   'staged': "+",
-    \   'unmerged': "+",
-    \   'renamed': "+",
-    \   'untracked': "+",
-    \   'deleted': "+",
-    \   'ignored': "+"
-    \  },
-    \ 'folder': {
-    \   'arrow_open': "",
-    \   'arrow_closed': "",
-    \   'default': "",
-    \   'open': "",
-    \   'empty': "",
-    \   'empty_open': "",
-    \   'symlink': "",
-    \   'symlink_open': "",
-    \   }
-    \ }
 
 lua << EOF
 require('nvim-tree').setup {
+    indent_markers = true, -- 0 by default, this option shows indent markers when folders are open
+    git_hl = true, -- 0 by default, will enable file highlight for git attributes (can be used without the icons).
+    highlight_opened_files = true, -- 0 by default, will enable folder and file icon highlight for opened files/directories.
+    root_folder_modifier = ':~', -- This is the default. See :help filename-modifiers for more options
+    add_trailing = true, -- "0 by default, append a trailing slash to folder names
+    group_empty = true, -- " 0 by default, compact folders that only contain a single folder into one node in the file tree
+    symlink_arrow = ' >> ', -- " defaults to ' ➛ '. used as a separator between symlinks' source and target.
+    create_in_closed_folder = false, -- " 1 by default, When creating files, sets the path of a file when cursor is on a closed folder to the parent folder when 0, and inside the folder when 1.
+    ignore = { '.git', 'node_modules', '.cache', 'build' },
+    icons = {
+        default = '+',
+        symlink = '+',
+        git = {
+            unstaged = '+',
+            staged = '+',
+            unmerged = '+',
+            renamed = '+',
+            untracked = '+',
+            deleted = '+',
+            ignored = '+'
+        },
+        folder = {
+            arrow_open = '',
+            arrow_closed = '',
+            default = '',
+            open = '',
+            empty = '',
+            empty_open = '',
+            symlink = '',
+            symlink_open = '',
+        }
+    },
+
     view = {
         width = 30,
         height = 30,
@@ -145,7 +147,7 @@ require('lspconfig').rust_analyzer.setup{}
 
 require('rust-tools').setup({})
 
-require('compe').setup {
+require('compe').setup({
   enabled = true;
   autocomplete = true;
   debug = false;
@@ -177,11 +179,12 @@ require('compe').setup {
     ultisnips = true;
     luasnip = true;
   };
-}
+})
 
-require('lspkind').init({
+--[[ require('lspkind').init({
     with_text = true,
 
+    mode = 'symbol_text',
     preset = 'codicons',
 
     symbol_map = {
@@ -209,9 +212,10 @@ require('lspkind').init({
       Struct = "䷦",
       Event = "༕",
       Operator = "⨕",
-      TypeParameter = ""
+      TypeParameter = ''
     },
-})
+}) --]]
+
 EOF
 
 inoremap <silent><expr> <C-Space> compe#complete()
