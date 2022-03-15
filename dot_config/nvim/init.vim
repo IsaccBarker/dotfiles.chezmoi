@@ -21,9 +21,9 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 
 Plug 'kaicataldo/material.vim'
+Plug 'ryanpcmcquen/true-monochrome_vim'
 Plug 'liuchengxu/vim-clap' " Fuzzy search
 Plug 'udalov/kotlin-vim' " Kotlin syntax
-
 Plug 'folke/trouble.nvim' " Trouble error display
 
 call plug#end()
@@ -37,9 +37,10 @@ set showbreak=↪\
 set list
 
 set termguicolors     " enable true colors support
-let g:material_terminal_italics = 1
-let g_material_theme_style = 'lighter-community'
-colorscheme material
+set background=dark
+" colorscheme material
+colorscheme true-monochrome
+" syntax off
 
 nmap <Leader>ss :<C-u>SessionSave<CR>
 nmap <Leader>sl :<C-u>SessionLoad<CR>

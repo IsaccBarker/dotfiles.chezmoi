@@ -39,7 +39,7 @@ fi
 alias vim=nvim # Use the supperior vim
 
 # Enable Starship
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
 
 # Get time since midnight
 zmodload zsh/datetime
