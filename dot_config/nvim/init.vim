@@ -30,7 +30,7 @@ call plug#end()
 
 " Easier to see cursor
 set nowrap
-set cursorline
+" set cursorline
 " set listchars=tab:\│\
 set listchars=tab:│\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set showbreak=↪\
