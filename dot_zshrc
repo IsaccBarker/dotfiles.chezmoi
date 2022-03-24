@@ -73,7 +73,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     xinput set-prop 13 365 0 1>/dev/null 2>/dev/null
 fi
 
-export PATH="$PATH:$HOME/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.gem/ruby/3.0.0/bin"
+export PATH="$PATH:$HOME/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.gem/ruby/3.0.0/bin:$HOME/.local/bin"
 alias mux=tmuxinator
 
 export CC=/usr/bin/clang
