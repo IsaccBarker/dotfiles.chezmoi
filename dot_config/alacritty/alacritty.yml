@@ -177,35 +177,30 @@ draw_bold_text_with_bright_colors: true
 
 # Colors (xterm)
 colors:
-  # Default colors
+  # COLORSCHEME: gruvbox_material.yml
   primary:
-    background: '0x000000'
-    foreground: '0xC8C8C8' # '0x00ff00'
-  # Normal colors
+    background: '0x282828'
+    foreground: '0xdfbf8e'
+
   normal:
-    black:   '0x000000'
-    red:     '0xcd0000'
-    green:   '0x00cd00'
-    yellow:  '0xcdcd00'
-    blue:    '0x0000ee'
-    magenta: '0xcd00cd'
-    cyan:    '0x00cdcd'
-    white:   '0xe5e5e5'
+    black: '0x665c54'
+    red: '0xea6962'
+    green: '0xa9b665'
+    yellow: '0xe78a4e'
+    blue: '0x7daea3'
+    magenta: '0xd3869b'
+    cyan: '0x89b482'
+    white: '0xdfbf8e'
 
-  # Bright colors
   bright:
-    black:   '0x7f7f7f'
-    red:     '0xff0000'
-    green:   '0x00ff00'
-    yellow:  '0xffff00'
-    blue:    '0x5c5cff'
-    magenta: '0xff00ff'
-    cyan:    '0x00ffff'
-    white:   '0xffffff'
-
-# Bell
-#
-# The bell is rung every time the BEL control character is received.
+    black: '0x928374'
+    red: '0xea6962'
+    green: '0xa9b665'
+    yellow: '0xe3a84e'
+    blue: '0x7daea3'
+    magenta: '0xd3869b'
+    cyan: '0x89b482'
+    white: '0xdfbf8e'
 bell:
   # Visual Bell Animation
   #
@@ -329,8 +324,8 @@ mouse:
   # The `double_click` and `triple_click` settings control the time
   # alacritty should wait for accepting multiple clicks as one double
   # or triple click.
-  double_click: { threshold: 300 }
-  triple_click: { threshold: 300 }
+  double_click: {threshold: 300}
+  triple_click: {threshold: 300}
 
   # If this is `true`, the cursor is temporarily hidden when typing.
   hide_when_typing: false
@@ -589,8 +584,8 @@ mouse:
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
 key_bindings:
-  - { key: Paste,                                       action: Paste          }
-  - { key: Copy,                                        action: Copy           }
+  - {key: Paste, action: Paste}
+  - {key: Copy, action: Copy}
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
   #- { key: L,         mods: Control, mode: ~Vi|~Search, chars: "\x0c"          }
   #- { key: PageUp,    mods: Shift,   mode: ~Alt,        action: ScrollPageUp,  }
