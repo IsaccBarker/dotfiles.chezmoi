@@ -4,7 +4,7 @@ Plug 'tikhomirov/vim-glsl' " GLSL syntax highlighting
 " Plug 'tpope/vim-fugitive' " Git plugin
 Plug 'cespare/vim-toml' " TOML syntax
 Plug 'mox-mox/vim-localsearch' " Local searching
-Plug 'mhinz/vim-signify' " Handy git diff stuff
+" Plug 'mhinz/vim-signify' " Handy git diff stuff
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
@@ -14,6 +14,7 @@ Plug 'neovim/nvim-lspconfig' " Nvim LSP
 Plug 'kabouzeid/nvim-lspinstall' " Autoinstall LSP servers
 Plug 'hrsh7th/nvim-compe' " Completion engine
 " Plug 'onsails/lspkind-nvim' " Pictograms (TODO: update for latest nvim)
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'neovim/nvim-lspconfig'
 Plug 'simrat39/rust-tools.nvim'
