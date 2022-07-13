@@ -20,6 +20,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'simrat39/rust-tools.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'DingDean/wgsl.vim'
 
 Plug 'kaicataldo/material.vim'
 Plug 'ryanpcmcquen/true-monochrome_vim'
