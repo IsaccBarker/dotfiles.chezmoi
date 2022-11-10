@@ -111,7 +111,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: SauceCodePro Nerd Font Mono # FFOONNTT
+    family: SauceCodePro Nerd Font # FFOONNTT
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -122,7 +122,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: SauceCodePro Nerd Font Mono # FFOONNTT
+    family: SauceCodePro Nerd Font # FFOONNTT
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -133,7 +133,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: SauceCodePro Nerd Font Mono # FFOONNTT
+    family: SauceCodePro Nerd Font # FFOONNTT
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -144,7 +144,7 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: SauceCodePro Nerd Font Mono
+    family: SauceCodePro Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
@@ -175,32 +175,34 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# Colors (xterm)
+# XTerm's default colors
 colors:
-  # COLORSCHEME: gruvbox_material.yml
+  # Default colors
   primary:
-    background: '0x282828'
-    foreground: '0xdfbf8e'
-
+    background: '0x000000'
+    foreground: '0xffffff'
+  # Normal colors
   normal:
-    black: '0x665c54'
-    red: '0xea6962'
-    green: '0xa9b665'
-    yellow: '0xe78a4e'
-    blue: '0x7daea3'
-    magenta: '0xd3869b'
-    cyan: '0x89b482'
-    white: '0xdfbf8e'
+    black:   '0x000000'
+    red:     '0xcd0000'
+    green:   '0x00cd00'
+    yellow:  '0xcdcd00'
+    blue:    '0x0000ee'
+    magenta: '0xcd00cd'
+    cyan:    '0x00cdcd'
+    white:   '0xe5e5e5'
 
+  # Bright colors
   bright:
-    black: '0x928374'
-    red: '0xea6962'
-    green: '0xa9b665'
-    yellow: '0xe3a84e'
-    blue: '0x7daea3'
-    magenta: '0xd3869b'
-    cyan: '0x89b482'
-    white: '0xdfbf8e'
+    black:   '0x7f7f7f'
+    red:     '0xff0000'
+    green:   '0x00ff00'
+    yellow:  '0xffff00'
+    blue:    '0x5c5cff'
+    magenta: '0xff00ff'
+    cyan:    '0x00ffff'
+    white:   '0xffffff'
+
 bell:
   # Visual Bell Animation
   #

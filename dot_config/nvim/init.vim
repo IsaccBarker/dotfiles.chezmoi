@@ -1,19 +1,17 @@
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'tikhomirov/vim-glsl' " GLSL syntax highlighting
-" Plug 'tpope/vim-fugitive' " Git plugin
 Plug 'cespare/vim-toml' " TOML syntax
 Plug 'mox-mox/vim-localsearch' " Local searching
-Plug 'mhinz/vim-signify' " Handy git diff stuff
+" Plug 'mhinz/vim-signify' " Handy git diff stuff
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
-Plug 'kyazdani42/nvim-tree.lua'
 Plug 'wakatime/vim-wakatime'
 
+Plug 'preservim/nerdtree'
 Plug 'neovim/nvim-lspconfig' " Nvim LSP
 Plug 'kabouzeid/nvim-lspinstall' " Autoinstall LSP servers
 Plug 'hrsh7th/nvim-compe' " Completion engine
-" Plug 'onsails/lspkind-nvim' " Pictograms (TODO: update for latest nvim)
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'neovim/nvim-lspconfig'
 Plug 'simrat39/rust-tools.nvim'
@@ -38,11 +36,14 @@ set showbreak=↪\
 set list
 
 set termguicolors     " enable true colors support
-colorscheme gruvbox-material
+" colorscheme gruvbox-material
 " set background=dark
 " colorscheme material
-" colorscheme true-monochrome
+colorscheme true-monochrome
 " syntax off
+
+" set color
+set colorcolumn=100
 
 nmap <Leader>ss :<C-u>SessionSave<CR>
 nmap <Leader>sl :<C-u>SessionLoad<CR>
@@ -53,6 +54,14 @@ set updatetime=100
 
 " Line numbers
 set nu
+
+" NERDTree stuff
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+highlight Directory guifg=#FF0000 ctermfg=red
 
 " Configure local searching
 nmap <leader>/ <Plug>localsearch_toggle
@@ -96,59 +105,20 @@ set autochdir
 " Mouse support
 set mouse=a
 
-" Nvim tree settings
-
 lua << EOF
-require('nvim-tree').setup {
-    indent_markers = true, -- 0 by default, this option shows indent markers when folders are open
-    git_hl = true, -- 0 by default, will enable file highlight for git attributes (can be used without the icons).
-    highlight_opened_files = true, -- 0 by default, will enable folder and file icon highlight for opened files/directories.
-    root_folder_modifier = ':~', -- This is the default. See :help filename-modifiers for more options
-    add_trailing = true, -- "0 by default, append a trailing slash to folder names
-    group_empty = true, -- " 0 by default, compact folders that only contain a single folder into one node in the file tree
-    symlink_arrow = ' >> ', -- " defaults to ' ➛ '. used as a separator between symlinks' source and target.
-    create_in_closed_folder = false, -- " 1 by default, When creating files, sets the path of a file when cursor is on a closed folder to the parent folder when 0, and inside the folder when 1.
-    ignore = { '.git', 'node_modules', '.cache', 'build' },
-    icons = {
-        default = '+',
-        symlink = '+',
-        git = {
-            unstaged = '+',
-            staged = '+',
-            unmerged = '+',
-            renamed = '+',
-            untracked = '+',
-            deleted = '+',
-            ignored = '+'
-        },
-        folder = {
-            arrow_open = '',
-            arrow_closed = '',
-            default = '',
-            open = '',
-            empty = '',
-            empty_open = '',
-            symlink = '',
-            symlink_open = '',
-        }
-    },
-
-    view = {
-        width = 30,
-        height = 30,
-        hide_root_folder = false,
-        side = 'left',
-        auto_resize = false,
-        mappings = {
-            custom_only = false,
-            list = {}
-        }
-    },
+require 'bufferline'.setup {
+    icon_separator_active = '!',
+    icon_separator_inactive = '|',
+    icon_close_tab = '*',
+    icon_close_tab_modified = 'M',
+    icon_pinned = 'P',
 }
 
-require('lspconfig').rust_analyzer.setup{}
+-- require('lspconfig').rust_analyzer.setup{}
+require('lspconfig').rls.setup{}
+require'lspconfig'.asm_lsp.setup{}
 
-require('rust-tools').setup({})
+-- require('rust-tools').setup({})
 
 require('compe').setup({
   enabled = true;

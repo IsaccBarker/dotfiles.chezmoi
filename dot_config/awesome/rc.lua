@@ -827,5 +827,8 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- }}}
 
+-- os.execute("picom")
 awful.util.spawn_with_shell("xscreensaver -no-splash")
+awful.util.spawn_with_shell("picom")
+awful.util.spawn_with_shell("/home/milo/Developer/mbn/mbn.sh")
 
