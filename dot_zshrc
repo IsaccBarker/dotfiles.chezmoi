@@ -9,7 +9,7 @@ export EDITOR="nvim"
 
 function get_cowfile() {
     dir=/usr/share/cows
-    
+
     if [ -d /usr/share/cowsay/cows ]; then
         dir=/usr/share/cowsay/cows
     fi
@@ -74,6 +74,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 fi
 
 export PATH="$PATH:$HOME/Developer/opt/binutils/build/cross/bin:$HOME/Developer/opt/gcc/build/cross/bin:$HOME/bin::$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.gem/ruby/3.0.0/bin:$HOME/.local/bin"
+export PATH="$PATH:$HOME/Developer/opt/colabfold_batch/bin:$HOME/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.gem/ruby/3.0.0/bin:$HOME/.local/bin:$HOME/Downloads/gcc/build/cross/bin:$HOME/Downloads/binutils/binutils-2.38/build/cross/bin"
 alias mux=tmuxinator
 alias starwars="telnet towel.blinkenlights.nl"
 alias telehack="telnet telehack.com"

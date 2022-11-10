@@ -12,11 +12,14 @@ Plug 'preservim/nerdtree'
 Plug 'neovim/nvim-lspconfig' " Nvim LSP
 Plug 'kabouzeid/nvim-lspinstall' " Autoinstall LSP servers
 Plug 'hrsh7th/nvim-compe' " Completion engine
+" Plug 'onsails/lspkind-nvim' " Pictograms (TODO: update for latest nvim)
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'neovim/nvim-lspconfig'
 Plug 'simrat39/rust-tools.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'DingDean/wgsl.vim'
 
 Plug 'kaicataldo/material.vim'
 Plug 'ryanpcmcquen/true-monochrome_vim'
