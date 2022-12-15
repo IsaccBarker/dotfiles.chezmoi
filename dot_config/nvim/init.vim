@@ -12,6 +12,7 @@ Plug 'preservim/nerdtree'
 Plug 'neovim/nvim-lspconfig' " Nvim LSP
 Plug 'kabouzeid/nvim-lspinstall' " Autoinstall LSP servers
 Plug 'hrsh7th/nvim-compe' " Completion engine
+Plug 'hrsh7th/vim-vsnip'
 " Plug 'onsails/lspkind-nvim' " Pictograms (TODO: update for latest nvim)
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'hrsh7th/vim-vsnip-integ'
@@ -39,10 +40,11 @@ set showbreak=↪\
 set list
 
 set termguicolors     " enable true colors support
-" colorscheme gruvbox-material
+let g:gruvbox_material_background = 'hard'
+colorscheme gruvbox-material
 " set background=dark
 " colorscheme material
-colorscheme true-monochrome
+" colorscheme true-monochrome
 " syntax off
 
 " set color
@@ -109,15 +111,7 @@ set autochdir
 set mouse=a
 
 lua << EOF
-require 'bufferline'.setup {
-    icon_separator_active = '!',
-    icon_separator_inactive = '|',
-    icon_close_tab = '*',
-    icon_close_tab_modified = 'M',
-    icon_pinned = 'P',
-}
-
--- require('lspconfig').rust_analyzer.setup{}
+require('lspconfig').rust_analyzer.setup{}
 require('lspconfig').rls.setup{}
 require'lspconfig'.asm_lsp.setup{}
 
