@@ -23,6 +23,9 @@ env:
   # available, otherwise `xterm-256color` is used.
   TERM: alacritty
 
+import:
+  - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
+
 window:
   # Window dimensions (changes require restart)
   #
@@ -111,7 +114,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: JetBrainsMono Nerd Font Mono # FFOONNTT
+    family: Iosevka # FFOONNTT
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -122,7 +125,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: JetBrainsMono Nerd Font Mono # FFOONNTT
+    family: Iosevka # FFOONNTT
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -133,7 +136,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: JetBrainsMono Nerd Font Mono # FFOONNTT
+    family: Iosevka # FFOONNTT
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -144,7 +147,7 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: JetBrainsMono Nerd Font Mono
+    family: Iosevka
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
@@ -203,28 +206,28 @@ draw_bold_text_with_bright_colors: true
 #    cyan:    '0x00ffff'
 #    white:   '0xffffff'
 
-colors:
-  primary:
-    background: '0x1d2021'
-    foreground: '0xd4be98'
-  normal:
-    black:   '0x32302f'
-    red:     '0xea6962'
-    green:   '0xa9b665'
-    yellow:  '0xd8a657'
-    blue:    '0x7daea3'
-    magenta: '0xd3869b'
-    cyan:    '0x89b482'
-    white:   '0xd4be98'
-  bright:
-    black:   '0x32302f'
-    red:     '0xea6962'
-    green:   '0xa9b665'
-    yellow:  '0xd8a657'
-    blue:    '0x7daea3'
-    magenta: '0xd3869b'
-    cyan:    '0x89b482'
-    white:   '0xd4be98'
+#colors:
+#  primary:
+#    background: '0x1d2021'
+#    foreground: '0xd4be98'
+#  normal:
+#    black:   '0x32302f'
+#    red:     '0xea6962'
+#    green:   '0xa9b665'
+#    yellow:  '0xd8a657'
+#    blue:    '0x7daea3'
+#    magenta: '0xd3869b'
+#    cyan:    '0x89b482'
+#    white:   '0xd4be98'
+#  bright:
+#    black:   '0x32302f'
+#    red:     '0xea6962'
+#    green:   '0xa9b665'
+#    yellow:  '0xd8a657'
+#    blue:    '0x7daea3'
+#    magenta: '0xd3869b'
+#    cyan:    '0x89b482'
+#    white:   '0xd4be98'
 
 bell:
   # Visual Bell Animation

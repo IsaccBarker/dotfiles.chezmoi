@@ -2,6 +2,9 @@
 name = "rust"
 auto-format = true
 
+[language.config.rust-analyzer.cargo]
+target = "x86_64-unknown-none"
+
 [[language]]
 name = "gas"
 scope = "source.llvm"

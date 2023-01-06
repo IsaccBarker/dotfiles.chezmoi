@@ -11,6 +11,8 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
+require("awesome-remember-geometry")
+
 local gears         = require("gears")
 local awful         = require("awful")
                       require("awful.autofocus")
@@ -827,8 +829,12 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- }}}
 
--- os.execute("picom")
 awful.util.spawn_with_shell("xscreensaver -no-splash")
 awful.util.spawn_with_shell("picom")
 awful.util.spawn_with_shell("/home/milo/Developer/mbn/mbn.sh")
+
+-- Map a key for maximization
+awful.key({ modkey, }, "Up", function (c)
+    c:emit_signal("maximize")
+end)
 
