@@ -27,6 +27,11 @@ gaps inner 10
 # No border
 default_border pixel none
 
+# Opacity
+set $opacity 0.99
+for_window [class=".*"] opacity $opacity
+for_window [app_id=".*"] opacity $opacity
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
