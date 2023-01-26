@@ -61,7 +61,7 @@ echo
 if [[ "$OSTYPE" != *darwin* ]]; then
     # Quotes
     if [ "$since_midnight" -ge "75600" ]; then
-        cowsay -f $(get_cowfile) $(fortune -a -s -o) # No one is looking, make offensive jokes
+        cowsay -f $(get_cowfile) $(fortune -a -s) # No one is looking, make offensive jokes
     else
         cowsay -f $(get_cowfile) $(fortune -a -s) # People might be looking
     fi
