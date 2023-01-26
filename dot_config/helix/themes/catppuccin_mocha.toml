@@ -13,10 +13,10 @@
 "string.regexp" = "peach"
 "string.special" = "blue"
 
-"comment" = { fg = "overlay1", modifiers = ["italic"] }
+"comment" = { fg = "overlay1" }
 
 "variable" = "text"
-"variable.parameter" = { fg = "maroon", modifiers = ["italic"] }
+"variable.parameter" = { fg = "maroon" }
 "variable.builtin" = "red"
 "variable.other.member" = "teal"
 
@@ -26,7 +26,7 @@
 "punctuation.special" = "sky"
 
 "keyword" = "mauve"
-"keyword.control.conditional" = { fg = "mauve", modifiers = ["italic"] }
+"keyword.control.conditional" = { fg = "mauve" }
 
 "operator" = "sky"
 
@@ -36,7 +36,7 @@
 
 "tag" = "mauve"
 
-"namespace" = { fg = "blue", modifiers = ["italic"] }
+"namespace" = { fg = "blue" }
 
 "special" = "blue" # fuzzy highlight
 
