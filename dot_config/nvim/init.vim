@@ -21,7 +21,7 @@ Plug 'simrat39/rust-tools.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'DingDean/wgsl.vim'
-
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'kaicataldo/material.vim'
 Plug 'ryanpcmcquen/true-monochrome_vim'
 Plug 'sainnhe/gruvbox-material'
@@ -40,8 +40,9 @@ set showbreak=↪\
 set list
 
 set termguicolors     " enable true colors support
-let g:gruvbox_material_background = 'hard'
-colorscheme gruvbox-material
+colorscheme catppuccin-mocha
+" let g:gruvbox_material_background = 'hard'
+" colorscheme gruvbox-material
 " set background=dark
 " colorscheme material
 " colorscheme true-monochrome
